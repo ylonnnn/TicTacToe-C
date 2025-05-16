@@ -200,26 +200,24 @@ array game_get_optimal_orientation(TicTacToe *game, int turn) {
 
   for (int i = 0; i < size; i++) {
     if (i < horizontal.size) {
-      array *f_orientation = array_get(&horizontal, i);
-      if (f_orientation->data != orientation.data) {
-        free(f_orientation->data);
-      }
+      array *c_orientation = array_get(&horizontal, i);
+      free(c_orientation->data);
     }
 
     if (i < vertical.size) {
-      array *f_orientation = array_get(&vertical, i);
-      if (f_orientation->data != orientation.data) {
-        free(f_orientation->data);
-      }
+      array *c_orientation = array_get(&vertical, i);
+      free(c_orientation->data);
     }
 
     if (i < diagonal.size) {
-      array *f_orientation = array_get(&diagonal, i);
-      if (f_orientation->data != orientation.data) {
-        free(f_orientation->data);
-      }
+      array *c_orientation = array_get(&diagonal, i);
+      free(c_orientation->data);
     }
   }
+
+  free(horizontal.data);
+  free(vertical.data);
+  free(diagonal.data);
 
   return orientation;
 }
